@@ -1,0 +1,25 @@
+server:
+  # 端口
+  port: 8001
+spring:
+  application:
+    name: cloud-payment-service
+  #数据源基本配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/test_springcloud
+    username: root
+    password: 678678
+    #druid
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+eureka:
+  client:
+    # 表示将自己注册进Eureka Server默认为true
+    register-with-eureka: true
+    # 是否从Eureka Server抓去已有的注册信息，默认是true
+    fetch-registry: true
+    # 设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址
+    service-url:
+      defaultZone: http://localhost:8888/eureka
+mybatis:
+  mapper-locations: classpath:mapping/*.xml

@@ -1,0 +1,17 @@
+server:
+  port: 8009
+  servlet:
+    encoding:
+      charset: utf-8
+spring:
+  servlet:
+    multipart:
+      #文件上传最大大小  1048576是1mb
+      maxFileSize: 10485760
+      #整个请求最大大小
+      maxRequestSize: 104857600
+  mvc:
+    hiddenmethod:
+      filter:
+        #设置一下mvc配置，不然会报错
+        enabled: true
