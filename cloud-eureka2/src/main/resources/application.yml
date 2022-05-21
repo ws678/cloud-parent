@@ -1,9 +1,9 @@
 server:
-  port: 8887
+  port: 8888
 eureka:
   instance:
     #eureka服务端的实例名称
-    hostname: eureka1.com
+    hostname: eureka2.com
   client:
     # false表示不向注册中心注册自己
     register-with-eureka: false
@@ -12,11 +12,10 @@ eureka:
     #Eureka Server交互地址
     service-url:
       #修改为集群模式：设置服务中心地址，指向其他注册中心
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka2.com:8888/eureka,http://${spring.security.user.name}:${spring.security.user.password}@eureka3.com:8889/eureka
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka1.com:8887/eureka,http://${spring.security.user.name}:${spring.security.user.password}@eureka3.com:8889/eureka
 spring:
   application:
-    name: cloud-eureka-server1
-  #设置安全认证
+    name: cloud-eureka-server2
   security:
     user:
       name: root

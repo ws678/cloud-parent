@@ -10,14 +10,22 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.sdkj</groupId>
-    <artifactId>cloud-consumer-order8002</artifactId>
+    <artifactId>cloud-eureka2</artifactId>
 
     <dependencies>
-        <!-- eureka client -->
+
+        <!-- eureka server -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
+
+        <!-- spring boot security安全认证启动器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
     </dependencies>
 
     <properties>

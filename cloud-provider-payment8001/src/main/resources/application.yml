@@ -4,6 +4,11 @@ server:
 spring:
   application:
     name: cloud-payment-service
+  #安全认证
+  security:
+    user:
+      name: root
+      password: root
   #数据源基本配置
   datasource:
     url: jdbc:mysql://localhost:3306/test_springcloud
@@ -20,6 +25,12 @@ eureka:
     fetch-registry: true
     # 设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址
     service-url:
-      defaultZone: http://localhost:8888/eureka
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka1.com:8887/eureka,http://${spring.security.user.name}:${spring.security.user.password}@eureka2.com:8888/eureka,http://${spring.security.user.name}:${spring.security.user.password}@eureka3.com:8889/eureka
 mybatis:
   mapper-locations: classpath:mapping/*.xml
+#开启优雅停服
+#（必须通过POST请求向Eureka Client发起一个shutdown请求。请求路径为：http://ip:port/shutdown。可以通过任意技术实现，如：HTTPClient，AJAX等。）
+management:
+  endpoint:
+    shutdown:
+      enabled: true

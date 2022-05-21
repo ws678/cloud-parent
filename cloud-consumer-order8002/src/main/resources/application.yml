@@ -1,11 +1,14 @@
 # 端口
 server:
   port: 8002
-
 spring:
   application:
     name: cloud-order
-
+  #安全认证
+  security:
+    user:
+      name: root
+      password: root
 eureka:
   client:
     # 表示将自己注册进Eureka Server默认为true
@@ -14,4 +17,11 @@ eureka:
     fetch-registry: true
     # 设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址
     service-url:
-      defaultZone: http://localhost:8888/eureka
+      #设置同时向三个eureka注册
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka1.com:8887/eureka,http://${spring.security.user.name}:${spring.security.user.password}@eureka2.com:8888/eureka,http://${spring.security.user.name}:${spring.security.user.password}@eureka3.com:8889/eureka
+#开启优雅停服
+#（必须通过POST请求向Eureka Client发起一个shutdown请求。请求路径为：http://ip:port/shutdown。可以通过任意技术实现，如：HTTPClient，AJAX等。）
+management:
+  endpoint:
+    shutdown:
+      enabled: true

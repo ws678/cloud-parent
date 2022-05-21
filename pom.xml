@@ -13,6 +13,8 @@
         <module>cloud-provider-payment8001</module>
         <module>file-server</module>
         <module>cloud-consumer-order8002</module>
+        <module>cloud-eureka2</module>
+        <module>cloud-eureka3</module>
     </modules>
 
     <properties>
@@ -48,6 +50,7 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!--优雅停服依赖包-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -109,44 +112,6 @@
                 <plugin>
                     <artifactId>maven-project-info-reports-plugin</artifactId>
                     <version>3.0.0</version>
-                </plugin>
-
-                <!--mybatis插件-->
-                <plugin>
-                    <groupId>org.mybatis.generator</groupId>
-                    <artifactId>mybatis-generator-maven-plugin</artifactId>
-                    <version>1.3.5</version>
-                    <dependencies>
-                        <!-- https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core -->
-                        <dependency>
-                            <groupId>org.mybatis.generator</groupId>
-                            <artifactId>mybatis-generator-core</artifactId>
-                            <version>1.3.5</version>
-                        </dependency>
-                        <dependency>
-                            <groupId>mysql</groupId>
-                            <artifactId>mysql-connector-java</artifactId>
-                            <version>8.0.28</version>
-                        </dependency>
-                    </dependencies>
-                    <executions>
-                        <execution>
-                            <id>mybatis.generator</id>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>generate</goal>
-                            </goals>
-                        </execution>
-                    </executions>
-                    <configuration>
-                        <!--允许移动生产的文件-->
-                        <verbose>true</verbose>
-                        <!--允许自动覆盖文件 工作中不要配置这个 -->
-                        <overwrite>false</overwrite>
-                        <configurationFile>
-                            src/main/resources/mybatis-generator.xml
-                        </configurationFile>
-                    </configuration>
                 </plugin>
             </plugins>
         </pluginManagement>
