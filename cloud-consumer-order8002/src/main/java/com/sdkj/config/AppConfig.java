@@ -21,7 +21,7 @@ public class AppConfig {
     // 标注此注解后，RestTemplate就具有了客户端负载均衡能力
     // 负载均衡技术依赖于的是Ribbon组件~
     // RestTemplate都塞入一个loadBalancerInterceptor 让其具备有负载均衡的能力
-    @LoadBalanced
+    /*@LoadBalanced*/
     public RestTemplate restTemplate(){
         return new RestTemplate();
     }

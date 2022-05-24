@@ -18,10 +18,18 @@ eureka:
     # 设置与Eureka Server交互的地址查询服务和注册服务都需要依赖这个地址
     service-url:
       #设置同时向三个eureka注册
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka1.com:8887/eureka,http://${spring.security.user.name}:${spring.security.user.password}@eureka2.com:8888/eureka,http://${spring.security.user.name}:${spring.security.user.password}@eureka3.com:8889/eureka
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka1.com:8887/eureka
+  instance:
+    #instance.getUri()获取到的就是这个值（默认为主机名称＋端口 / 这里修改为IP地址＋端口）
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    #访问路径是否显示IP地址
+    prefer-ip-address: true
 #开启优雅停服
 #（必须通过POST请求向Eureka Client发起一个shutdown请求。请求路径为：http://ip:port/shutdown。可以通过任意技术实现，如：HTTPClient，AJAX等。）
 management:
   endpoint:
     shutdown:
       enabled: true
+#logback
+logging:
+  config: classpath:log/logback.xml

@@ -1,0 +1,11 @@
+# 端口
+server:
+  port: 8004
+
+spring:
+  application:
+    name: cloud-order
+  cloud:
+    zookeeper:
+      # 集群模式用逗号隔开
+      connect-string: 127.0.0.1:2181

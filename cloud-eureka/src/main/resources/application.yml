@@ -12,7 +12,7 @@ eureka:
     #Eureka Server交互地址
     service-url:
       #修改为集群模式：设置服务中心地址，指向其他注册中心
-      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka2.com:8888/eureka,http://${spring.security.user.name}:${spring.security.user.password}@eureka3.com:8889/eureka
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@eureka1.com:8887/eureka
 spring:
   application:
     name: cloud-eureka-server1
